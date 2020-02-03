@@ -26,9 +26,24 @@ export default class TodoApp extends Component {
         <div>
           <header className="header">
             <h1>todos</h1>
+            {this.state.error ? (
+              <span className="error">Oh no! Error</span>
+            ) : null}
             <TodoForm
               currentTodo={this.state.currentTodo}
               handleChange={value => this.handleChange(value)}
+              currentTodo={this.state.currentTodo}
+              setState={data => {
+                this.setState({
+                  todos: this.state.todos.concat(data),
+                  currentTodo: ""
+                });
+              }}
+              setError={() => {
+                this.setState({
+                  error: true
+                })
+              }}
             />
           </header>
           <section className="main">
