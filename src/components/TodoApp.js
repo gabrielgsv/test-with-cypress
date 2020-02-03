@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import Footer from "./Footer";
+import axios from "axios";
 
 export default class TodoApp extends Component {
   constructor(props) {
@@ -12,6 +13,12 @@ export default class TodoApp extends Component {
       currentTodo: "",
       todos: []
     };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://locahost:3030/api/todos")
+      .then(({ data }) => this.setState({ todos: data }));
   }
 
   handleChange(value) {
@@ -42,7 +49,7 @@ export default class TodoApp extends Component {
               setError={() => {
                 this.setState({
                   error: true
-                })
+                });
               }}
             />
           </header>
