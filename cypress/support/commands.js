@@ -1,5 +1,5 @@
-Cypress.Commands.add("sendAndVisit", () => {
+Cypress.Commands.add("sendAndVisit", (seedData = "fixture:todos") => {
   cy.server();
-  cy.route("GET", "/api/todos", "fixture:todos");
+  cy.route("GET", "/api/todos", seedData);
   cy.visit("/");
 });

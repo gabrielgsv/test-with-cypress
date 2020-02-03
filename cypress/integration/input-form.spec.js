@@ -3,7 +3,7 @@ describe("Input form", () => {
   const typedText = "Buy anything";
 
   beforeEach(() => {
-    cy.visit("/");
+    cy.sendAndVisit([]);
   });
 
   it("focuses input on load", () => {

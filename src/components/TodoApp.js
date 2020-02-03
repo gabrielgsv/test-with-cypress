@@ -18,7 +18,8 @@ export default class TodoApp extends Component {
   componentDidMount() {
     axios
       .get("http://locahost:3030/api/todos")
-      .then(({ data }) => this.setState({ todos: data }));
+      .then(({ data }) => this.setState({ todos: data }))
+      .catch(() => this.setState({ error: true }));
   }
 
   handleChange(value) {
